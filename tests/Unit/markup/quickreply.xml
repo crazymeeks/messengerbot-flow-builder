@@ -1,0 +1,16 @@
+<main>
+    <get_started>
+        <bot>
+            <message>
+                <text>Do you want to continue?</text>
+                <quick_replies>
+                    <content_type>text</content_type>
+                    <title>Yes</title>
+                    <payload>
+                        <action>yes_continue</action>
+                    </payload>
+                </quick_replies>
+            </message>
+        </bot>
+    </get_started>
+</main>

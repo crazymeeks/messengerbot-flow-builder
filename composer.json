@@ -1,0 +1,33 @@
+{
+    "name": "crazymeeks/messengerbot-flow-builder",
+    "description": "Facebook messenger flow builder for PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeff Claud",
+            "email": "jeffclaud17@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Crazymeeks\\MessengerBot\\": "src/MessengerBot"
+        },
+        "files": [
+            "src/MessengerBot/helper/custom_function.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.5.x-dev",
+        "mockery/mockery": "^1.5"
+    },
+    "require": {
+        "ixudra/curl": "dev-master"
+    }
+}
