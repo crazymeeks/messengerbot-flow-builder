@@ -17,6 +17,7 @@ class Button extends AbstractBase
         if (!isset($markUp['message']['attachment']['payload']['buttons'][0])) {
             $markUp['message']['attachment']['payload']['buttons'] = [$markUp['message']['attachment']['payload']['buttons']];
         }
-        return $this->createResponseArray($markUp);
+        
+        return array($this->createResponseArray($markUp));
     }
 }

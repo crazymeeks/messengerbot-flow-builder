@@ -1,0 +1,12 @@
+<main>
+    <get_started>
+        <bot>
+            <message>
+                <class>\Tests\Unit\ClassTemplate</class>
+            </message>
+            <message>
+                <class>\Tests\Unit\ClassTemplate</class>
+            </message>
+        </bot>
+    </get_started>
+</main>

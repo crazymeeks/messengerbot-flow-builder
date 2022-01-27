@@ -3,6 +3,7 @@
 namespace Crazymeeks\MessengerBot\Builder;
 
 use Crazymeeks\MessengerBot\Builder\FlowBuilder;
+use Crazymeeks\MessengerBot\Builder\ClassBuilder;
 use Crazymeeks\MessengerBot\Builder\Messaging\Templates;
 use Crazymeeks\MessengerBot\Builder\Messaging\SendingText;
 use Crazymeeks\MessengerBot\Builder\Messaging\SendingTextWithAttachment;
@@ -57,7 +58,22 @@ class MessagingFactory
                 return new $template($markup, $flowBuilder, $facebookProfile);
             }
         }
+        
+        if (isset($markup['message'])) {
 
+            if (isset($markup['message']['class'])) {
+                
+                $markup['message']['class'] =  [$markup['message']['class']];
+            }
 
+            if (isset($markup['message'][0]['class'])) {
+                foreach($markup['message'] as $key => $namespace){
+                    $markup['message']['class'][] = $namespace['class'];
+                    unset($markup['message'][$key]);
+                }
+            }
+
+            return new ClassBuilder($markup, $flowBuilder, $facebookProfile);
+        }
     }
 }

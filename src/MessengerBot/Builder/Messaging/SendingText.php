@@ -17,6 +17,6 @@ class SendingText extends AbstractBase
 
         $markUp['message']['text'] = findReplace($markUp['message']['text'], 'firstname', $name);
         
-        return $this->createResponseArray($markUp);
+        return array($this->createResponseArray($markUp));
     }
 }

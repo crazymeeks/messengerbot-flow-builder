@@ -7,7 +7,7 @@ use Tests\TestCase;
 class ButtonTemplateTest extends TestCase
 {
 
-    public function testGenericTemplateStructure()
+    public function testButtonTemplateStructure()
     {
         
         $markupArray = $this->getMarkup('buttontemplate');
@@ -15,7 +15,7 @@ class ButtonTemplateTest extends TestCase
         $transformed = $this->builder
                             ->setRecipientId('1234567890')
                             ->transform($markupArray['get_started']['bot']);
-        $this->assertSame([
+        $this->assertSame([[
             'recipient' => [
                 'id' => '1234567890'
             ],
@@ -36,7 +36,7 @@ class ButtonTemplateTest extends TestCase
                 ]
             ],
             'message_type' => 'RESPONSE'
-        ], $transformed);
+        ]], $transformed);
     }
 
 }

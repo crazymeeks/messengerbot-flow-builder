@@ -13,6 +13,7 @@ class SendingTextWithAttachment extends AbstractBase
     public function getBody()
     {
         $markUp = $this->markup;
-        return $this->createResponseArray($markUp);
+        
+        return array($this->createResponseArray($markUp));
     }
 }

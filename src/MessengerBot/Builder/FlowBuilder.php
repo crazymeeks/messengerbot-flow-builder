@@ -2,7 +2,7 @@
 
 namespace Crazymeeks\MessengerBot\Builder;
 
-
+use stdClass;
 use Crazymeeks\MessengerBot\Builder\MessagingFactory;
 
 class FlowBuilder
@@ -15,7 +15,17 @@ class FlowBuilder
      */
     protected $recipientId;
 
+    /**
+     * The loaded markup from xml
+     *
+     * @var string
+     */
     protected $loadedMarkup;
+
+    /**
+     * @var \stdClass
+     */
+    protected $postbackPayload;
 
 
     /**
@@ -32,6 +42,30 @@ class FlowBuilder
         $this->recipientId = $recipientId;
 
         return $this;
+    }
+
+    /**
+     * Set postback payload
+     *
+     * @param \stdClass $payload
+     * 
+     * @return $this
+     */
+    public function setPostBackPayload(stdClass $payload)
+    {
+        $this->postbackPayload = $payload;
+
+        return $this;
+    }
+
+    /**
+     * Get postback payload
+     *
+     * @return \stdClass
+     */
+    public function getPostBackPayload()
+    {
+        return $this->postbackPayload;
     }
 
     /**

@@ -39,11 +39,9 @@ abstract class AbstractBase implements MessagingInterface
     }
 
     /**
-     * Get first name of facebook user
-     *
-     * @return string
+     * @inheritDoc
      */
-    protected function getUserFacebookFirstName()
+    public function getUserFacebookFirstName()
     {
         $name = 'There';
         if (function_exists('get_default_fb_name')) {
@@ -58,13 +56,9 @@ abstract class AbstractBase implements MessagingInterface
     }
 
     /**
-     * Create a response array
-     *
-     * @param array $markUp
-     * 
-     * @return array
+     * @inheritDoc
      */
-    protected function createResponseArray(array $markUp)
+    public function createResponseArray(array $markUp)
     {
         $composer = new Composer($markUp);
         return $composer->compose($this->flowBuilder);

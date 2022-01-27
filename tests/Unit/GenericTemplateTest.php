@@ -15,7 +15,7 @@ class GenericTemplateTest extends TestCase
         $transformed = $this->builder
                             ->setRecipientId('1234567890')
                             ->transform($markupArray['get_started']['bot']);
-        $this->assertSame([
+        $this->assertSame([[
             'recipient' => [
                 'id' => '1234567890'
             ],
@@ -52,7 +52,7 @@ class GenericTemplateTest extends TestCase
                 ]
             ],
             'message_type' => 'RESPONSE'
-        ], $transformed);
+        ]], $transformed);
     }
 
 }

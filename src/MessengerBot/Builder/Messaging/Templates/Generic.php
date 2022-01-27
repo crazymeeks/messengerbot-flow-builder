@@ -27,6 +27,6 @@ class Generic extends AbstractBase
             }
         }
 
-        return $this->createResponseArray($markUp);
+        return array($this->createResponseArray($markUp));
     }
 }

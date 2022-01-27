@@ -33,6 +33,6 @@ class QuickReplies extends AbstractBase
             unset($key, $qr);
         }
 
-        return $this->createResponseArray($markUp);
+        return array($this->createResponseArray($markUp));
     }
 }
