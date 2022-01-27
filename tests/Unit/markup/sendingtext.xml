@@ -1,0 +1,17 @@
+<main>
+    <get_started>
+        <bot>
+            <message_type>
+                <type>RESPONSE</type>
+                <!--
+                    <tag> is  for type MESSAGE_TAG only
+                    @see https://developers.facebook.com/docs/messenger-platform/send-messages#standard_messaging
+                -->
+                <!--tag>ACCOUNT_UPDATE</tag-->
+            </message_type>
+            <message>
+                <text>Hello World {{firstname}}!</text>
+            </message>
+        </bot>
+    </get_started>
+</main>

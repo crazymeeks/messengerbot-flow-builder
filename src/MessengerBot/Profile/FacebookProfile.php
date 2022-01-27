@@ -2,10 +2,10 @@
 
 namespace Crazymeeks\MessengerBot\Profile;
 
-use stdClass;
 use Ixudra\Curl\CurlService;
+use Crazymeeks\MessengerBot\Profile\FacebookProfileInterface;
 
-class FacebookProfile
+class FacebookProfile implements FacebookProfileInterface
 {
 
     /**
@@ -27,7 +27,7 @@ class FacebookProfile
      *
      * @var string
      */
-    private $graph_version = 'v7.0';
+    private $graph_version = 'v12.0';
 
     /**
      * @var \Ixudra\Curl\CurlService

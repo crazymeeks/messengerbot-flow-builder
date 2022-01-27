@@ -8,8 +8,41 @@ use Crazymeeks\MessengerBot\Builder\MessagingFactory;
 class FlowBuilder
 {
 
+    /**
+     * Messenger user id
+     *
+     * @var string
+     */
+    protected $recipientId;
+
     protected $loadedMarkup;
 
+
+    /**
+     * Set recipient id of messenger user
+     *
+     * This is the person where we send the response
+     * 
+     * @param string $recipientId
+     * 
+     * @return $this
+     */
+    public function setRecipientId(string $recipientId)
+    {
+        $this->recipientId = $recipientId;
+
+        return $this;
+    }
+
+    /**
+     * Get messenger user id
+     *
+     * @return string
+     */
+    public function getRecipientId()
+    {
+        return $this->recipientId;
+    }
 
     /**
      * Transform markup to the format that can be accepted
@@ -23,7 +56,7 @@ class FlowBuilder
     public function transform(array $markup, $facebookProfile = null)
     {
 
-        $message = MessagingFactory::createFromMarkup($markup, $facebookProfile);
+        $message = MessagingFactory::createFromMarkup($markup, $this, $facebookProfile);
 
         return $message->getBody();
 

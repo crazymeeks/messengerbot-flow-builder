@@ -1,6 +1,6 @@
 <?php
 
-namespace Crazymeeks\MessengerBot\Builder\Messaging;
+namespace Crazymeeks\MessengerBot\Builder\Messaging\QuickReplies;
 
 use function is_multi_array;
 use Crazymeeks\MessengerBot\Builder\Messaging\AbstractBase;
@@ -15,11 +15,7 @@ class QuickReplies extends AbstractBase
     {
         $markUp = $this->markup;
         
-        $name = 'There';
-        
-        if (is_object($this->facebookProfile)) {
-            $name = $this->facebookProfile->first_name;
-        }
+        $name = $this->getUserFacebookFirstName();
 
         $markUp['message']['text'] = findReplace($markUp['message']['text'], 'firstname', $name);
         
@@ -37,6 +33,6 @@ class QuickReplies extends AbstractBase
             unset($key, $qr);
         }
 
-        return $markUp;
+        return $this->createResponseArray($markUp);
     }
 }

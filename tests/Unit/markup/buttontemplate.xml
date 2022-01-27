@@ -1,0 +1,28 @@
+<main>
+    <get_started>
+        <bot>
+            <message_type>
+                <type>RESPONSE</type>
+                <!--
+                    <tag> is  for type MESSAGE_TAG only
+                    @see https://developers.facebook.com/docs/messenger-platform/send-messages#standard_messaging
+                -->
+                <!--tag>ACCOUNT_UPDATE</tag-->
+            </message_type>
+            <message>
+                <attachment>
+                    <type>template</type>
+                    <payload>
+                        <template_type>button</template_type>
+                        <text>What do you want to do next?</text>
+                        <buttons>
+                            <type>web_url</type>
+                            <url>https://www.messenger.com</url>
+                            <title>Visit Messenger</title>
+                        </buttons>
+                    </payload>
+                </attachment>
+            </message>
+        </bot>
+    </get_started>
+</main>

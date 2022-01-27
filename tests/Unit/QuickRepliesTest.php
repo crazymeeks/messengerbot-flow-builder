@@ -3,32 +3,23 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Crazymeeks\MessengerBot\Builder\FlowBuilder;
 
-class FlowBuilderTest extends TestCase
+class QuickRepliesTest extends TestCase
 {
-
-    /**
-     * @var \Crazymeeks\MessengerBot\Builder\FlowBuilder
-     */
-    protected $builder;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->builder = new FlowBuilder();
-    }
 
     public function testQuickReplyStructure()
     {
         
-        $markup = file_get_contents(__DIR__ . '/markup/quickreply.xml');
-        $markupArray = $this->builder
-                         ->decodeXMLMarkUp($markup);
+        $markupArray = $this->getMarkup('quickreply');
         
-        $transformed = $this->builder->transform($markupArray['get_started']['bot']);
+        $transformed = $this->builder
+                            ->setRecipientId('1234567890')
+                            ->transform($markupArray['get_started']['bot']);
         
         $this->assertSame([
+            'recipient' => [
+                'id' => '1234567890'
+            ],
             'message' => [
                 'text' => 'Do you want to continue?',
                 'quick_replies' => [
@@ -41,4 +32,5 @@ class FlowBuilderTest extends TestCase
             ]
         ], $transformed);
     }
+
 }
