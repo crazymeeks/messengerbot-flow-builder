@@ -24,7 +24,7 @@ class ButtonTemplateTest extends TestCase
                     'type' => 'template',
                     'payload' => [
                         'template_type' => 'button',
-                        'text' => 'What do you want to do next?',
+                        'text' => 'What do you want to do next There?',
                         'buttons' => [
                             [
                                 'type' => 'web_url',
