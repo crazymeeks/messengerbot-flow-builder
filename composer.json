@@ -9,6 +9,8 @@
             "email": "jeffclaud17@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Crazymeeks\\MessengerBot\\": "src/MessengerBot"
@@ -27,6 +29,6 @@
         "mockery/mockery": "^1.5"
     },
     "require": {
-        "ixudra/curl": "dev-master"
+        "ixudra/curl": "^6.19"
     }
 }
