@@ -4,12 +4,13 @@ namespace Tests\Unit;
 
 use Crazymeeks\MessengerBot\Builder\FlowBuilder;
 use Crazymeeks\MessengerBot\Builder\Messaging\MessagingInterface;
+use Crazymeeks\MessengerBot\Builder\Messaging\ClassTypeFlowInterface;
 
-class ClassTemplate
+class ClassTemplate implements ClassTypeFlowInterface
 {
 
 
-    public function getResponse(FlowBuilder $flowBuilder, MessagingInterface $message)
+    public function getResponse(FlowBuilder $flowBuilder, MessagingInterface $message): array
     {
         // vd($flowBuilder->getPostBackPayload());
         // vd($message->getUserFacebookFirstName());

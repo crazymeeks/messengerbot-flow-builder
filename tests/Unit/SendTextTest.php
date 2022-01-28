@@ -14,7 +14,7 @@ class SendTextTest extends TestCase
         $transformed = $this->builder
                             ->setRecipientId('1234567890')
                             ->transform($markupArray['get_started']['bot']);
-        
+        $this->assertTrue($this->builder->hasNextFlow());
         $this->assertSame([[
             'recipient' => [
                 'id' => '1234567890'

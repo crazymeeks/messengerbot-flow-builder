@@ -12,6 +12,22 @@
             <message>
                 <text>Hello World {{firstname}}!</text>
             </message>
+            <next>display_option</next>
         </bot>
     </get_started>
+    <display_option>
+        <bot>
+            <message_type>
+                <type>RESPONSE</type>
+                <!--
+                    <tag> is  for type MESSAGE_TAG only
+                    @see https://developers.facebook.com/docs/messenger-platform/send-messages#standard_messaging
+                -->
+                <!--tag>ACCOUNT_UPDATE</tag-->
+            </message_type>
+            <message>
+                <text>Hello from next</text>
+            </message>
+        </bot>
+    </display_option>
 </main>

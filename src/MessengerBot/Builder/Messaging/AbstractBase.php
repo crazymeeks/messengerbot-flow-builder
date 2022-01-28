@@ -61,6 +61,12 @@ abstract class AbstractBase implements MessagingInterface
     public function createResponseArray(array $markUp)
     {
         $composer = new Composer($markUp);
+
+
+        if (isset($markUp['next']) && $markUp['next']) {
+            $this->flowBuilder->setNextFlow($markUp['next']);
+        }
+
         return $composer->compose($this->flowBuilder);
     }
 }

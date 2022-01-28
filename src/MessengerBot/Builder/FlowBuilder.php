@@ -27,6 +27,13 @@ class FlowBuilder
      */
     protected $postbackPayload;
 
+    /**
+     * <next>flow</next>
+     *
+     * @var string
+     */
+    protected $nextFlow = null;
+
 
     /**
      * Set recipient id of messenger user
@@ -76,6 +83,39 @@ class FlowBuilder
     public function getRecipientId()
     {
         return $this->recipientId;
+    }
+
+    /**
+     * Set the next flow. Next flow is <next>tag</next> in xml
+     *
+     * @param string $next
+     * 
+     * @return $this
+     */
+    public function setNextFlow(string $next)
+    {
+        $this->nextFlow = $next;
+        return $this;
+    }
+
+    /**
+     * Check if we have next flow
+     *
+     * @return boolean
+     */
+    public function hasNextFlow()
+    {
+        return !is_null($this->nextFlow);
+    }
+
+    /**
+     * Get next flow
+     *
+     * @return string
+     */
+    public function getNextFlow()
+    {
+        return $this->nextFlow;
     }
 
     /**
