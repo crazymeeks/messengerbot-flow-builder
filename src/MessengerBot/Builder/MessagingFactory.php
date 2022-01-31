@@ -2,9 +2,9 @@
 
 namespace Crazymeeks\MessengerBot\Builder;
 
+use LogicException;
 use Crazymeeks\MessengerBot\Builder\FlowBuilder;
 use Crazymeeks\MessengerBot\Builder\ClassBuilder;
-use Crazymeeks\MessengerBot\Builder\Messaging\Templates;
 use Crazymeeks\MessengerBot\Builder\Messaging\SendingText;
 use Crazymeeks\MessengerBot\Builder\Messaging\SendingTextWithAttachment;
 use Crazymeeks\MessengerBot\Builder\Messaging\QuickReplies\QuickReplies;
@@ -75,5 +75,7 @@ class MessagingFactory
 
             return new ClassBuilder($markup, $flowBuilder, $facebookProfile);
         }
+
+        throw new LogicException("Cannot find specific action due to invalid xml markup. Please check your xml markup!");
     }
 }
