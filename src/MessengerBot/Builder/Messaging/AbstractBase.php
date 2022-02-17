@@ -50,7 +50,7 @@ abstract class AbstractBase implements MessagingInterface
             $facebookProfile = new FacebookProfile(new CurlService());
             $facebookProfile->setToken($fbToken)
                             ->setUserFacebookId($this->flowBuilder->getRecipientId())
-                            ->fields(['first_name', 'last_name'])
+                            ->fields(['first_name', 'last_name', 'picture'])
                             ->get();
             $name = $facebookProfile->first_name;
         } else {
