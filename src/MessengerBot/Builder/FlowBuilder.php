@@ -3,6 +3,7 @@
 namespace Crazymeeks\MessengerBot\Builder;
 
 use stdClass;
+use Crazymeeks\MessengerBot\Profile\RetrievedProfile;
 use Crazymeeks\MessengerBot\Builder\MessagingFactory;
 
 class FlowBuilder
@@ -38,6 +39,11 @@ class FlowBuilder
      * @var string
      */
     protected $facebookToken = null;
+
+    /**
+     * @var \Crazymeeks\MessengerBot\Profile\RetrievedProfile
+     */
+    protected $retrievedProfile;
 
     /**
      * Set facebook token
@@ -177,4 +183,29 @@ class FlowBuilder
 
         return $markUpArray;
     }
+
+    /**
+     * Set facebook user profile information
+     * 
+     * @param \Crazymeeks\MessengerBot\Profile\RetrievedProfile
+     *
+     * @return $this
+     */
+    public function setRetrievedFacebookProfileInfo(RetrievedProfile $profile)
+    {
+        $this->retrievedProfile = $profile;
+        return $this;
+    }
+
+    /**
+     * The retrieved facebook user profile
+     *
+     * @return \Crazymeeks\MessengerBot\Profile\RetrievedProfile
+     */
+    public function retrievedFacebookProfile()
+    {
+        return $this->retrievedProfile;
+    }
+
+
 }

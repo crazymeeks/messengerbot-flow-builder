@@ -2,11 +2,12 @@
 
 namespace Crazymeeks\MessengerBot\Builder\Messaging;
 
+use stdClass;
 use Ixudra\Curl\CurlService;
 use Crazymeeks\MessengerBot\Builder\FlowBuilder;
 use Crazymeeks\MessengerBot\Profile\FacebookProfile;
+use Crazymeeks\MessengerBot\Profile\RetrievedProfile;
 use Crazymeeks\MessengerBot\Builder\Composer\Composer;
-use Crazymeeks\MessengerBot\Profile\FacebookProfileInterface;
 use Crazymeeks\MessengerBot\Builder\Messaging\MessagingInterface;
 
 abstract class AbstractBase implements MessagingInterface
@@ -45,6 +46,17 @@ abstract class AbstractBase implements MessagingInterface
      */
     public function getUserFacebookFirstName()
     {
+        $retrievedProfile = $this->retrieveUserFacebookProfile();
+        return $retrievedProfile->first_name;
+    }
+
+    /**
+     * Retrieve real facebook user profile info
+     *
+     * @return \Crazymeeks\MessengerBot\Profile\RetrievedProfile
+     */
+    protected function retrieveUserFacebookProfile()
+    {
         $name = 'There';
         if ($_SERVER['APP_ENV'] != 'testing' && $fbToken = $this->flowBuilder->getFacebookToken()) {
             $facebookProfile = new FacebookProfile(new CurlService());
@@ -52,14 +64,23 @@ abstract class AbstractBase implements MessagingInterface
                             ->setUserFacebookId($this->flowBuilder->getRecipientId())
                             ->fields(['first_name', 'last_name', 'picture'])
                             ->get();
-            $name = $facebookProfile->first_name;
+            $retrievedProfile = new RetrievedProfile($facebookProfile);
+            $this->flowBuilder->setRetrievedFacebookProfileInfo($retrievedProfile);
         } else {
             if (function_exists('get_default_fb_name')) {
                 $name = \get_default_fb_name();
             }
+            $stdClass = new stdClass();
+            $stdClass->first_name = $name;
+            $stdClass->last_name = null;
+            $stdClass->picture = null;
+
+            $retrievedProfile = new RetrievedProfile($stdClass);
+            $this->flowBuilder->setRetrievedFacebookProfileInfo($retrievedProfile);
         }
 
-        return $name;
+        return $retrievedProfile;
+
     }
 
     /**
@@ -69,6 +90,7 @@ abstract class AbstractBase implements MessagingInterface
     {
         $composer = new Composer($markUp);
 
+        $this->retrieveUserFacebookProfile();
 
         if (isset($markUp['next']) && $markUp['next']) {
             $this->flowBuilder->setNextFlow($markUp['next']);
