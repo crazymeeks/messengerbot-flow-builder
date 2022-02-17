@@ -12,6 +12,7 @@ class SendTextTest extends TestCase
         $markupArray = $this->getMarkup('sendingtext');
         
         $transformed = $this->builder
+                            ->setFacebookToken('fbtoken')
                             ->setRecipientId('1234567890')
                             ->transform($markupArray['get_started']['bot']);
         $this->assertTrue($this->builder->hasNextFlow());

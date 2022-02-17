@@ -34,6 +34,33 @@ class FlowBuilder
      */
     protected $nextFlow = null;
 
+    /**
+     * @var string
+     */
+    protected $facebookToken = null;
+
+    /**
+     * Set facebook token
+     *
+     * @param string $token
+     * 
+     * @return $this
+     */
+    public function setFacebookToken(string $token)
+    {
+        $this->facebookToken = $token;
+        return $this;
+    }
+
+    /**
+     * Get facebook token
+     *
+     * @return string
+     */
+    public function getFacebookToken()
+    {
+        return $this->facebookToken;
+    }
 
     /**
      * Set recipient id of messenger user

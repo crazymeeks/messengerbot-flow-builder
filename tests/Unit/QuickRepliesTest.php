@@ -13,6 +13,7 @@ class QuickRepliesTest extends TestCase
         $markupArray = $this->getMarkup('quickreply');
         
         $transformed = $this->builder
+                            ->setFacebookToken('fbtoken')
                             ->setRecipientId('1234567890')
                             ->transform($markupArray['get_started']['bot']);
         

@@ -13,6 +13,7 @@ class ClassTemplateTest extends TestCase
         $markupArray = $this->getMarkup('classtemplate');
         
         $transformed = $this->builder
+                            ->setFacebookToken('fbtoken')
                             ->setPostBackPayload(json_decode(json_encode([
                                 'action' => 'get_started',
                                 'user_reply' => 'Sample user reply',

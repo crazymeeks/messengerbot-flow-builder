@@ -2,7 +2,9 @@
 
 namespace Crazymeeks\MessengerBot\Builder\Messaging;
 
+use Ixudra\Curl\CurlService;
 use Crazymeeks\MessengerBot\Builder\FlowBuilder;
+use Crazymeeks\MessengerBot\Profile\FacebookProfile;
 use Crazymeeks\MessengerBot\Builder\Composer\Composer;
 use Crazymeeks\MessengerBot\Profile\FacebookProfileInterface;
 use Crazymeeks\MessengerBot\Builder\Messaging\MessagingInterface;
@@ -44,12 +46,17 @@ abstract class AbstractBase implements MessagingInterface
     public function getUserFacebookFirstName()
     {
         $name = 'There';
-        if (function_exists('get_default_fb_name')) {
-            $name = \get_default_fb_name();
-        }
-
-        if ($this->facebookProfile instanceof FacebookProfileInterface) {
-            $name = $this->facebookProfile->first_name;
+        if ($_SERVER['APP_ENV'] != 'testing' && $fbToken = $this->flowBuilder->getFacebookToken()) {
+            $facebookProfile = new FacebookProfile(new CurlService());
+            $facebookProfile->setToken($fbToken)
+                            ->setUserFacebookId($this->flowBuilder->getRecipientId())
+                            ->fields(['first_name', 'last_name'])
+                            ->get();
+            $name = $facebookProfile->first_name;
+        } else {
+            if (function_exists('get_default_fb_name')) {
+                $name = \get_default_fb_name();
+            }
         }
 
         return $name;
