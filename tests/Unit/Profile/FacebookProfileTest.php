@@ -46,7 +46,7 @@ class FacebookProfileTest extends TestCase
         $facebook->setToken('fbtoken')
                              ->setUserFacebookId('1234567890')
                              ->setGraphVersion('v12.0')
-                             ->fields(['first_name', 'last_name', 'picture'])
+                             ->fields(['first_name', 'last_name', 'profile_pic'])
                              ->get();
 
         $this->assertEquals('There', $facebook->first_name);

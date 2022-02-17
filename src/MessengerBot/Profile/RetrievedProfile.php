@@ -18,7 +18,7 @@ class RetrievedProfile
     {
         $this->first_name = $facebookProfile->first_name;
         $this->last_name = $facebookProfile->last_name;
-        $this->picture = $facebookProfile->picture;
+        $this->picture = $facebookProfile->profile_pic;
     }
 
     /**

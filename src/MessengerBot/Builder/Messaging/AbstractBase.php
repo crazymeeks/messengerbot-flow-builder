@@ -73,7 +73,7 @@ abstract class AbstractBase implements MessagingInterface
             $stdClass = new stdClass();
             $stdClass->first_name = $name;
             $stdClass->last_name = null;
-            $stdClass->picture = null;
+            $stdClass->profile_pic = null;
 
             $retrievedProfile = new RetrievedProfile($stdClass);
             $this->flowBuilder->setRetrievedFacebookProfileInfo($retrievedProfile);
